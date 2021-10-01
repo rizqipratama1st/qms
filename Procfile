@@ -1,1 +1,1 @@
-web: ./bin/qms
+web: ./qms
