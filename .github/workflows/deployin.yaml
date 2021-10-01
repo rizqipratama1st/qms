@@ -1,0 +1,23 @@
+name: "Deploy Ke Heroku By Rizqi Pratama"
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      # - uses: actions/setup-go@v2
+      # - run: go fmt .
+      # - run: ./golangci-lint --verbose run -D errcheck # proses linting kode golang
+      # - run: ./golangci-lint --verbose run
+      - uses: akhileshns/heroku-deploy@v3.12.12 # Deploy ke heroku
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "qms-dts-001-2021" 
+          heroku_email: "rizqi.mailsos@gmail.com"
+        env:
+          HD_CONNSTRING: ${{secrets.CONNSTRING}}

@@ -45,6 +45,10 @@ func main() {
 		AllowCredentials: true,
 	}))
 
+	app.Get("/", func(c *fiber.Ctx) error {
+		return c.SendString("Hello, World!")
+	})
+
 	// app.Get("/", Book)
 	// app.Post("/", PostBook)
 
@@ -60,7 +64,7 @@ func main() {
 	routes.Setup(app)
 
 	//untuk Local Development
-	// app.Listen(":8000"))
+	// app.Listen(":8080")
 
 	// Untuk Production
 	app.Listen(":" + os.Getenv("PORT"))
