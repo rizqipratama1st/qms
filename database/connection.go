@@ -1,6 +1,7 @@
 package database
 
 import (
+	"os"
 	"qms/models"
 
 	"gorm.io/driver/mysql"
@@ -15,7 +16,7 @@ func Connect() *gorm.DB {
 	// db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	// untuk Server Production
-	dsn := "sql6441433:K7cwfKcqVs@tcp(sql6.freesqldatabase.com:3306)/sql6441433"
+	dsn := os.Getenv("CONNSTRING")
 	db, err := gorm.Open(mysql.Open(dsn), &gorm.Config{})
 
 	if err != nil {
